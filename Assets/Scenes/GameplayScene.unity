@@ -121,7 +121,7 @@ Transform:
   - {fileID: 846678879}
   - {fileID: 671408196}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &73499340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &168454385
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &168454386
 Transform:
   m_ObjectHideFlags: 0
@@ -224,8 +224,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 169832907}
   - {fileID: 828281792}
+  - {fileID: 169832907}
   m_Father: {fileID: 788148004}
   m_RootOrder: 0
 --- !u!212 &168454387
@@ -271,7 +271,7 @@ GameObject:
   - 4: {fileID: 169832907}
   - 212: {fileID: 169832908}
   m_Layer: 0
-  m_Name: GBJAM_0001s_0001s_0004_Flavor-B
+  m_Name: Flavor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 168454386}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!212 &169832908
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ RectTransform:
   - {fileID: 1637274147}
   - {fileID: 296828434}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -496,7 +496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &402939906
 Transform:
   m_ObjectHideFlags: 0
@@ -508,8 +508,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1100010787}
   - {fileID: 812676040}
+  - {fileID: 1100010787}
   m_Father: {fileID: 1979106735}
   m_RootOrder: 0
 --- !u!212 &402939907
@@ -688,7 +688,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &788148002
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,13 +698,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 788148004}
   - 212: {fileID: 788148003}
+  - 114: {fileID: 788148005}
   m_Layer: 0
-  m_Name: Customer B
+  m_Name: CustomerB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &788148003
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -745,13 +746,36 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788148002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.11173, y: -71.516556, z: 0}
+  m_LocalPosition: {x: -21, y: -72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 168454386}
   m_Father: {fileID: 1159572588}
   m_RootOrder: 1
+--- !u!114 &788148005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 788148002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95735cf46a7a604f9d1ad53ec9dc456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DrinkFlavors:
+  - {fileID: 21300000, guid: c278f44051d5d48e49c68c09eefabb8f, type: 3}
+  - {fileID: 21300000, guid: 7aa9aea4557ed4d7089e891090ba666a, type: 3}
+  - {fileID: 21300000, guid: 9dd5f495bc2ee4bad8d5512d55c5ceb4, type: 3}
+  BobaFlavors:
+  - {fileID: 21300000, guid: 7c7da852a0c03419a908ea25fc903df8, type: 3}
+  - {fileID: 21300000, guid: c9551a8a8a27240979f9a3c76cf81584, type: 3}
+  orderSent: 0
+  orderDone: 0
+  myBubble: {fileID: 0}
+  myFlavor: {fileID: 0}
+  myBoba: {fileID: 0}
 --- !u!1 &812676039
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +786,7 @@ GameObject:
   - 4: {fileID: 812676040}
   - 212: {fileID: 812676041}
   m_Layer: 0
-  m_Name: GBJAM_0001s_0002s_0005_Flavor-A
+  m_Name: Boba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,12 +799,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 812676039}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 402939906}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!212 &812676041
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -809,8 +833,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 31eb64485b30944258cc2dc89908060f, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 7c7da852a0c03419a908ea25fc903df8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -824,7 +848,7 @@ GameObject:
   - 4: {fileID: 828281792}
   - 212: {fileID: 828281793}
   m_Layer: 0
-  m_Name: GBJAM_0001s_0001s_0005_Flavor-A
+  m_Name: Boba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -837,12 +861,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 828281791}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 168454386}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!212 &828281793
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -871,8 +895,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 7aa9aea4557ed4d7089e891090ba666a, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 7c7da852a0c03419a908ea25fc903df8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1016,7 +1040,7 @@ GameObject:
   - 4: {fileID: 1100010787}
   - 212: {fileID: 1100010788}
   m_Layer: 0
-  m_Name: GBJAM_0001s_0002s_0004_Flavor-B
+  m_Name: Flavor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1034,7 +1058,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 402939906}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!212 &1100010788
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1098,7 +1122,7 @@ Transform:
   - {fileID: 788148004}
   - {fileID: 1545627505}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1304227403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,7 +1184,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &1395233360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1195,7 @@ GameObject:
   - 4: {fileID: 1395233361}
   - 212: {fileID: 1395233362}
   m_Layer: 0
-  m_Name: GBJAM_0001s_0000s_0005_Flavor-A
+  m_Name: Flavor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1219,7 +1243,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: f4f35ca8e82454756817d76e63d375fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47cd5de0f123b4de99c4308dd45e01d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1363,7 +1387,7 @@ GameObject:
   - 4: {fileID: 1527516881}
   - 212: {fileID: 1527516882}
   m_Layer: 0
-  m_Name: GBJAM_0001s_0000s_0004_Flavor-B
+  m_Name: Boba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1376,7 +1400,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1527516880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1411,7 +1435,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 47cd5de0f123b4de99c4308dd45e01d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c7da852a0c03419a908ea25fc903df8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1476,7 +1500,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1545627503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,13 +1510,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 1545627505}
   - 212: {fileID: 1545627504}
+  - 114: {fileID: 1545627506}
   m_Layer: 0
-  m_Name: Customer C
+  m_Name: CustomerC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1545627504
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1533,13 +1558,36 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1545627503}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.88827, y: -66.516556, z: 0}
+  m_LocalPosition: {x: 28, y: -67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1908290918}
   m_Father: {fileID: 1159572588}
   m_RootOrder: 2
+--- !u!114 &1545627506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1545627503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95735cf46a7a604f9d1ad53ec9dc456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DrinkFlavors:
+  - {fileID: 21300000, guid: 47cd5de0f123b4de99c4308dd45e01d3, type: 3}
+  - {fileID: 21300000, guid: f4f35ca8e82454756817d76e63d375fe, type: 3}
+  - {fileID: 21300000, guid: 386bb6ba0dc484d2bbd821a470e4cc7b, type: 3}
+  BobaFlavors:
+  - {fileID: 21300000, guid: 7c7da852a0c03419a908ea25fc903df8, type: 3}
+  - {fileID: 21300000, guid: c9551a8a8a27240979f9a3c76cf81584, type: 3}
+  orderSent: 0
+  orderDone: 0
+  myBubble: {fileID: 0}
+  myFlavor: {fileID: 0}
+  myBoba: {fileID: 0}
 --- !u!1 &1547655957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,6 +1598,7 @@ GameObject:
   - 4: {fileID: 1547655959}
   - 212: {fileID: 1547655958}
   - 114: {fileID: 1547655960}
+  - 114: {fileID: 1547655961}
   m_Layer: 0
   m_Name: Main Hero
   m_TagString: Untagged
@@ -1602,7 +1651,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &1547655960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1615,6 +1664,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spd: 50
+--- !u!114 &1547655961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1547655957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb47d00c60020574c8d57d64855715aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadZoneVal: 0.3
 --- !u!1001 &1558797022
 Prefab:
   m_ObjectHideFlags: 0
@@ -1803,8 +1864,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179aaa2782adf4934a5d34af729fc2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CustomerSpawnTime: 1
-  CustomersList: {fileID: 1159572587}
+  CustomerSpawnTime: 5
+  CustomersList: {fileID: 1159572588}
 --- !u!4 &1666282180
 Transform:
   m_ObjectHideFlags: 0
@@ -1817,7 +1878,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 1
 --- !u!1 &1755507628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,7 +2025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1908290918
 Transform:
   m_ObjectHideFlags: 0
@@ -2022,13 +2083,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 1979106735}
   - 212: {fileID: 1979106734}
+  - 114: {fileID: 1979106736}
   m_Layer: 0
-  m_Name: Customer A
+  m_Name: CustomerA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1979106734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2069,13 +2131,36 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1979106733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -86.11173, y: -66.516556, z: 0}
+  m_LocalPosition: {x: -86, y: -67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 402939906}
   m_Father: {fileID: 1159572588}
   m_RootOrder: 0
+--- !u!114 &1979106736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1979106733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95735cf46a7a604f9d1ad53ec9dc456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DrinkFlavors:
+  - {fileID: 21300000, guid: d618ce1e32fb948c786e4c7086f441ff, type: 3}
+  - {fileID: 21300000, guid: 31eb64485b30944258cc2dc89908060f, type: 3}
+  - {fileID: 21300000, guid: 40b59e23a3ea14a9291fcfc4a5ec2a17, type: 3}
+  BobaFlavors:
+  - {fileID: 21300000, guid: 7c7da852a0c03419a908ea25fc903df8, type: 3}
+  - {fileID: 21300000, guid: c9551a8a8a27240979f9a3c76cf81584, type: 3}
+  orderSent: 0
+  orderDone: 0
+  myBubble: {fileID: 0}
+  myFlavor: {fileID: 0}
+  myBoba: {fileID: 0}
 --- !u!1 &2034274790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,4 +2222,4 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8

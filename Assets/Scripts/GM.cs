@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GM : MonoBehaviour {
 
 	public float CustomerSpawnTime, gameLength;
+	bool firstTimeRun;
 	float last_CSTime = 0f;
 
 	public Transform CustomersList;
@@ -15,17 +16,17 @@ public class GM : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Time.time >= last_CSTime) {
 			for (int i = 0; i < CustomersList.childCount; i++) {
-				if (CustomersList.GetChild (i).GetComponent<OrderScript> ().orderSent == false && !customersWithoutOrders.Contains (CustomersList.GetChild (i))) {
+				if (!CustomersList.GetChild (i).GetComponent<OrderScript> ().orderSent && !customersWithoutOrders.Contains (CustomersList.GetChild (i))) {
 					customersWithoutOrders.Add (CustomersList.GetChild (i));
-				} else {
-					customersWithoutOrders.Remove(CustomersList.GetChild (i));
+				} else if (CustomersList.GetChild (i).GetComponent<OrderScript> ().orderSent){
+					customersWithoutOrders.Remove (CustomersList.GetChild (i));
 				}
 			}
 
@@ -34,11 +35,13 @@ public class GM : MonoBehaviour {
 				customersWithoutOrders[i].GetComponent<OrderScript> ().orderSent = false;
 				customersWithoutOrders[i].GetComponent<OrderScript> ().myBubble.gameObject.SetActive (false);
 			}
-			customersWithoutOrders[Random.Range (0, customersWithoutOrders.Count)].GetComponent<OrderScript> ().SendOrder(10f);
-			CustomerCount++;
+			if (customersWithoutOrders.Count > 0){
+				customersWithoutOrders [Random.Range (0, customersWithoutOrders.Count)].GetComponent<OrderScript> ().SendOrder (10f);
+				CustomerCount++;
+			}
 			last_CSTime += CustomerSpawnTime;
 		}
-
+		//firstTimeRun = true;
 		//CustomersList.GetChild (0).GetComponent<OrderScript> ().SendOrder ();
 	}
 }

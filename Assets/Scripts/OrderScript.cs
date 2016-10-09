@@ -6,6 +6,7 @@ public class OrderScript : MonoBehaviour {
 	public bool orderSent, orderDone;
 	public Transform myBubble, myFlavor, myBoba;
 
+
 	// Use this for initialization
 	void Start () {
 		myBubble = transform.FindChild (transform.name + " Bubble");

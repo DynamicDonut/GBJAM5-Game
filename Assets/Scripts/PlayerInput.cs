@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerInput : MonoBehaviour {
 	public float deadZoneVal;
-	public int selectedFTank, currDrinkFill, currDrinkType, currDrinkBoba;
-	public int maxDrinkFill;
+	public int selectedCol, currDrinkFill, currDrinkType, currDrinkBoba;
+	public int maxDrinkFill, myScore;
 	public bool pouringDrink, drinkNotSet, tankEmptied;
 	Vector3 defaultSpot;
 
@@ -13,7 +13,7 @@ public class PlayerInput : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		myGM = GameObject.Find ("GameManager").transform;
-		selectedFTank = 1;
+		selectedCol = 1;
 		currDrinkFill = currDrinkType = currDrinkBoba = 0;
 		drinkNotSet = true;
 		defaultSpot = transform.position;
@@ -24,13 +24,13 @@ public class PlayerInput : MonoBehaviour {
 		if (!pouringDrink) {
 			if (Input.GetAxis ("Horizontal") <= deadZoneVal * -1) {
 				transform.position = defaultSpot + (Vector3.left * 51);
-				selectedFTank = 0;
+				selectedCol = 0;
 			} else if (Input.GetAxis ("Horizontal") >= deadZoneVal) {
 				transform.position = defaultSpot + (Vector3.right * 51);
-				selectedFTank = 2;
+				selectedCol = 2;
 			} else {
 				transform.position = defaultSpot;
-				selectedFTank = 1;
+				selectedCol = 1;
 			}
 		}
 
@@ -38,19 +38,42 @@ public class PlayerInput : MonoBehaviour {
 			pouringDrink = false;
 		} else {
 			pouringDrink = true;
-			PourBobaDrink ();
+			if (currDrinkFill != maxDrinkFill) {
+				PourBobaDrink ();
+			}
 		}
 
-		//Debug.Log (pouringDrink + ", " + selectedFTank);
+		if (Input.GetButtonUp ("Fire1") || Input.GetButtonUp ("Fire2") ) {
+			Transform myCustomer = myGM.GetComponent<GM> ().CustomersList.GetChild (selectedCol);
+			if (currDrinkFill == maxDrinkFill && myCustomer.GetComponent<OrderScript>().orderSent) {
+				myScore++;
+				if (System.Convert.ToInt32(myCustomer.GetComponent<OrderScript> ().myFlavor.GetComponent<SpriteRenderer>().sprite.name.Substring(12)) == currDrinkType + 1) {
+					myScore++;
+				}
+				if (System.Convert.ToInt32(myCustomer.GetComponent<OrderScript> ().myBoba.GetComponent<SpriteRenderer>().sprite.name.Substring(4)) == currDrinkBoba + 1) {
+					myScore++;
+				}
+			}
+
+			currDrinkFill = 0;
+			drinkNotSet = true;
+
+			myCustomer.GetComponent<SpriteRenderer>().enabled = false;
+			myCustomer.GetComponent<OrderScript> ().orderSent = false;
+			myCustomer.GetComponent<OrderScript> ().myBubble.gameObject.SetActive (false);
+		}
+		if (Input.GetKeyUp (KeyCode.Space)) {
+			Debug.Log (System.Convert.ToInt32 (myGM.GetComponent<GM> ().CustomersList.GetChild (selectedCol).GetComponent<OrderScript> ().myFlavor.GetComponent<SpriteRenderer>().sprite.name.Substring (12)));
+		}
 	}
 
 	void PourBobaDrink(){
 		if (drinkNotSet) {
-			currDrinkType = selectedFTank;
+			currDrinkType = selectedCol;
 			drinkNotSet = false;
 		}
 
-		if (currDrinkType == selectedFTank) {
+		if (currDrinkType == selectedCol) {
 			if (currDrinkFill < maxDrinkFill) {
 				if (!tankEmptied) {				
 					StartCoroutine ("FillMath");
@@ -66,6 +89,6 @@ public class PlayerInput : MonoBehaviour {
 		tankEmptied = true;
 		yield return new WaitForSeconds (1f);
 		tankEmptied = false;
-		myGM.GetComponent<GM> ().FlavorBars [selectedFTank].GetComponent<RectTransform> ().sizeDelta = new Vector2 (3, myGM.GetComponent<GM> ().FlavorBars [selectedFTank].GetComponent<RectTransform> ().sizeDelta.y - 2);
+		myGM.GetComponent<GM> ().FlavorBars [selectedCol].GetComponent<RectTransform> ().sizeDelta = new Vector2 (3, myGM.GetComponent<GM> ().FlavorBars [selectedCol].GetComponent<RectTransform> ().sizeDelta.y - 2);
 	}
 }

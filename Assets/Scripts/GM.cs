@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 public class GM : MonoBehaviour {
 
-	public float CustomerSpawnTime, gameLength;
-	bool firstTimeRun;
-	float last_CSTime = 0f;
-
+	public float CustomerSpawnTime, barRefillTime, gameLength;
+	float last_CSTime, last_BRTime;
 	public Transform CustomersList;
+	Transform myHero;
 	public List<Transform> customersWithoutOrders;
 	int CustomerCount;
 
@@ -16,11 +15,21 @@ public class GM : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		myHero = GameObject.Find ("Main Hero").transform;
+		last_CSTime = last_BRTime = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (Time.time >= last_BRTime){
+			for (int i = 0; i < FlavorBars.Length; i++) {
+				if (FlavorBars [i].GetComponent<RectTransform > ().sizeDelta.y < 28 && !myHero.GetComponent<PlayerInput>().pouringDrink) {
+					FlavorBars [i].GetComponent<RectTransform> ().sizeDelta = new Vector2 (3, FlavorBars [i].GetComponent<RectTransform> ().sizeDelta.y + 1);
+				}
+			}
+			last_BRTime += barRefillTime;
+		}
+
 		if (Time.time >= last_CSTime) {
 			for (int i = 0; i < CustomersList.childCount; i++) {
 				if (!CustomersList.GetChild (i).GetComponent<OrderScript> ().orderSent && !customersWithoutOrders.Contains (CustomersList.GetChild (i))) {
@@ -41,7 +50,5 @@ public class GM : MonoBehaviour {
 			}
 			last_CSTime += CustomerSpawnTime;
 		}
-		//firstTimeRun = true;
-		//CustomersList.GetChild (0).GetComponent<OrderScript> ().SendOrder ();
 	}
 }

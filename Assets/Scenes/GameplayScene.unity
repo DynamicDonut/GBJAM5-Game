@@ -1675,11 +1675,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadZoneVal: 0.3
-  selectedFTank: 0
+  selectedCol: 0
   currDrinkFill: 0
   currDrinkType: 0
   currDrinkBoba: 0
   maxDrinkFill: 8
+  myScore: 0
   pouringDrink: 0
   drinkNotSet: 0
   tankEmptied: 0
@@ -1871,9 +1872,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179aaa2782adf4934a5d34af729fc2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CustomerSpawnTime: 5
-  gameLength: 120
+  CustomerSpawnTime: 8
+  barRefillTime: 4
+  gameLength: 180
   CustomersList: {fileID: 1159572588}
+  customersWithoutOrders: []
   FlavorTanks:
   - {fileID: 106141530}
   - {fileID: 781212462}

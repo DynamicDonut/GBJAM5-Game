@@ -32,7 +32,7 @@ public class OrderScript : MonoBehaviour {
 		if (GetComponent<SpriteRenderer> ().enabled == false) {
 			GetComponent<SpriteRenderer> ().enabled = true;
 		}
-		yield return new WaitForSeconds (2f);
+		yield return new WaitForSeconds (1f); // time between Customer spawning and Order bubble spawning
 		if (myBubble.gameObject.activeSelf == false) {
 			myBubble.gameObject.SetActive (true);
 		}

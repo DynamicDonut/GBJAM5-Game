@@ -9,19 +9,20 @@ public class SunDialScript : MonoBehaviour {
 
 	[Range(0f, 2.0f)]
 	public float gameTime;
-	public float maxGameTime;
+	float maxGameTime;
 
 	// Use this for initialization
 	void Start () {
 		gameTime = 0f;
+		maxGameTime = GameObject.Find ("GameManager").GetComponent<GM> ().gameLength;
 		sunIcon = transform.FindChild ("Sun-Icon");
 		sunPosition = sunIcon.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		currTime = Mathf.Clamp (Time.time, 0f, 60f);
-		gameTime = mapVal (currTime, 0f, 60f, 0f, 2f);
+		currTime = Mathf.Clamp (Time.time, 0f, maxGameTime);
+		gameTime = mapVal (currTime, 0f, maxGameTime, 0f, 2f);
 
 		sunPosition.x = (gameTime - 1f) * 69;
 		sunIcon.position = sunPosition;

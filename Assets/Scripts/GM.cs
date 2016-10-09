@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GM : MonoBehaviour {
 
-	public float CustomerSpawnTime;
+	public float CustomerSpawnTime, gameLength;
 	float last_CSTime = 0f;
 
 	public Transform CustomersList;
+	public List<Transform> customersWithoutOrders;
 	int CustomerCount;
+
+	public GameObject[] FlavorTanks, FlavorBars;
+
 	// Use this for initialization
 	void Start () {
 
@@ -16,13 +21,21 @@ public class GM : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Time.time >= last_CSTime) {
-			CustomerCount++;
 			for (int i = 0; i < CustomersList.childCount; i++) {
-				CustomersList.GetChild (i).GetComponent<SpriteRenderer> ().enabled = false;
-				CustomersList.GetChild (i).GetComponent<OrderScript> ().orderSent = false;
-				CustomersList.GetChild (i).GetComponent<OrderScript> ().myBubble.gameObject.SetActive (false);
+				if (CustomersList.GetChild (i).GetComponent<OrderScript> ().orderSent == false && !customersWithoutOrders.Contains (CustomersList.GetChild (i))) {
+					customersWithoutOrders.Add (CustomersList.GetChild (i));
+				} else {
+					customersWithoutOrders.Remove(CustomersList.GetChild (i));
+				}
 			}
-			CustomersList.GetChild (Random.Range (0, CustomersList.childCount)).GetComponent<OrderScript> ().SendOrder(10f);
+
+			for (int i = 0; i < customersWithoutOrders.Count; i++) {
+				customersWithoutOrders[i].GetComponent<SpriteRenderer>().enabled = false;
+				customersWithoutOrders[i].GetComponent<OrderScript> ().orderSent = false;
+				customersWithoutOrders[i].GetComponent<OrderScript> ().myBubble.gameObject.SetActive (false);
+			}
+			customersWithoutOrders[Random.Range (0, customersWithoutOrders.Count)].GetComponent<OrderScript> ().SendOrder(10f);
+			CustomerCount++;
 			last_CSTime += CustomerSpawnTime;
 		}
 

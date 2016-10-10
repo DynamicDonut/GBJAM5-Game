@@ -21,6 +21,7 @@ public class PlayerInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		GM.finalScore = myScore;
 		if (!pouringDrink) {
 			if (Input.GetAxis ("Horizontal") <= deadZoneVal * -1) {
 				transform.position = defaultSpot + (Vector3.left * 51);
@@ -43,7 +44,7 @@ public class PlayerInput : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetButtonUp ("Fire1") || Input.GetButtonUp ("Fire2") ) {
+		if (Input.GetButtonUp ("AButton") || Input.GetButtonUp ("BButton") ) {
 			Transform myCustomer = myGM.GetComponent<GM> ().CustomersList.GetChild (selectedCol);
 			if (currDrinkFill == maxDrinkFill && myCustomer.GetComponent<OrderScript>().orderSent) {
 				myScore++;
@@ -61,9 +62,6 @@ public class PlayerInput : MonoBehaviour {
 			myCustomer.GetComponent<SpriteRenderer>().enabled = false;
 			myCustomer.GetComponent<OrderScript> ().orderSent = false;
 			myCustomer.GetComponent<OrderScript> ().myBubble.gameObject.SetActive (false);
-		}
-		if (Input.GetKeyUp (KeyCode.Space)) {
-			Debug.Log (System.Convert.ToInt32 (myGM.GetComponent<GM> ().CustomersList.GetChild (selectedCol).GetComponent<OrderScript> ().myFlavor.GetComponent<SpriteRenderer>().sprite.name.Substring (12)));
 		}
 	}
 
@@ -87,7 +85,7 @@ public class PlayerInput : MonoBehaviour {
 	IEnumerator FillMath(){
 		currDrinkFill += 2;
 		tankEmptied = true;
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (0.5f);
 		tankEmptied = false;
 		myGM.GetComponent<GM> ().FlavorBars [selectedCol].GetComponent<RectTransform> ().sizeDelta = new Vector2 (3, myGM.GetComponent<GM> ().FlavorBars [selectedCol].GetComponent<RectTransform> ().sizeDelta.y - 2);
 	}

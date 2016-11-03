@@ -34,7 +34,7 @@ public class GM : MonoBehaviour {
 			finalScore = 0;
 			last_CSTime = last_BRTime = 0f;
 
-			if (Input.GetButtonUp ("AButton")) {
+			if (Input.GetButtonUp ("Action")) {
 				if (myUI.FindChild("Start Page").gameObject.activeSelf) {
 					myUI.FindChild("Start Page").gameObject.SetActive (false);
 					myUI.FindChild("Instructions Page").gameObject.SetActive (true);
@@ -44,7 +44,7 @@ public class GM : MonoBehaviour {
 				}
 			}
 
-			if (Input.GetButtonUp ("StartButton")) {
+			if (Input.GetButtonUp ("Start")) {
 				SceneManager.LoadScene ("GameplayScene");
 			}
 		} else if (SceneManager.GetActiveScene ().name == "GameplayScene") {
@@ -97,7 +97,7 @@ public class GM : MonoBehaviour {
 			GameObject.Find ("Score").GetComponent<Text> ().text = finalScore.ToString();
 			startingGame = true;
 
-			if (Input.GetButtonUp("StartButton")) {
+			if (Input.GetButtonUp("Start")) {
 				SceneManager.LoadScene ("MainMenuScene");
 			}
 		}

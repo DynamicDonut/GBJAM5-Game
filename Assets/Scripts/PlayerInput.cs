@@ -44,24 +44,26 @@ public class PlayerInput : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetButtonUp ("AButton") || Input.GetButtonUp ("BButton") ) {
-			Transform myCustomer = myGM.GetComponent<GM> ().CustomersList.GetChild (selectedCol);
-			if (currDrinkFill == maxDrinkFill && myCustomer.GetComponent<OrderScript>().orderSent) {
-				myScore++;
-				if (System.Convert.ToInt32(myCustomer.GetComponent<OrderScript> ().myFlavor.GetComponent<SpriteRenderer>().sprite.name.Substring(12)) == currDrinkType + 1) {
+		if (Input.GetButtonUp ("Action") || Input.GetButtonUp ("Cancel") ) {
+			if (currDrinkFill != maxDrinkFill) {
+				Transform myCustomer = myGM.GetComponent<GM> ().CustomersList.GetChild (selectedCol);
+				if (currDrinkFill == maxDrinkFill && myCustomer.GetComponent<OrderScript> ().orderSent) {
 					myScore++;
+					if (System.Convert.ToInt32 (myCustomer.GetComponent<OrderScript> ().myFlavor.GetComponent<SpriteRenderer> ().sprite.name.Substring (12)) == currDrinkType + 1) {
+						myScore++;
+					}
+					if (System.Convert.ToInt32 (myCustomer.GetComponent<OrderScript> ().myBoba.GetComponent<SpriteRenderer> ().sprite.name.Substring (4)) == currDrinkBoba + 1) {
+						myScore++;
+					}
 				}
-				if (System.Convert.ToInt32(myCustomer.GetComponent<OrderScript> ().myBoba.GetComponent<SpriteRenderer>().sprite.name.Substring(4)) == currDrinkBoba + 1) {
-					myScore++;
-				}
+
+				currDrinkFill = 0;
+				drinkNotSet = true;
+
+				myCustomer.GetComponent<SpriteRenderer> ().enabled = false;
+				myCustomer.GetComponent<OrderScript> ().orderSent = false;
+				myCustomer.GetComponent<OrderScript> ().myBubble.gameObject.SetActive (false);
 			}
-
-			currDrinkFill = 0;
-			drinkNotSet = true;
-
-			myCustomer.GetComponent<SpriteRenderer>().enabled = false;
-			myCustomer.GetComponent<OrderScript> ().orderSent = false;
-			myCustomer.GetComponent<OrderScript> ().myBubble.gameObject.SetActive (false);
 		}
 	}
 
